@@ -1,7 +1,7 @@
 { 
 "scripts": {
   "dev": "nodemon index.js",
-  "build": "mpm i"
+  "build": "npm i"
 },
   "dependencies": {
     "bcryptjs": "^2.4.3",
