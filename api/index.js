@@ -18,6 +18,11 @@ mongoose.connect(process.env.MONGO_URL, (err) => {
 });
 const jwtSecret = process.env.JWT_SECRET;
 const bcryptSalt = bcrypt.genSaltSync(10);
+const corsOptions = {
+  origin: ['https://robant-chat-app.netlify.app', 'https://6404f1b729b7614c323775f6--robant-chat-app.netlify.app'],
+  credentials: true,
+};
+
 
 app.use(cors({
   credentials: true,
@@ -50,6 +55,19 @@ async function getUserDataFromRequest(req) {
 app.get('/test', (req,res) => {
     res.json('test ok');
 });
+
+app.get('/profile', cors(corsOptions), (req,res) => {
+  // ...
+});
+
+app.post('/login', cors(corsOptions), async (req,res) => {
+  // ...
+});
+
+app.post('/register', cors(corsOptions), async (req,res) => {
+  // ...
+});
+
 
 app.get('/messages/:userId', async (req,res) => {
     const{userId} = req.params;
