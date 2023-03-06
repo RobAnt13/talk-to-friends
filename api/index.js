@@ -1,4 +1,5 @@
 const express = require('express');
+const app = express();
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
@@ -18,15 +19,15 @@ mongoose.connect(process.env.MONGO_URL, (err) => {
 const jwtSecret = process.env.JWT_SECRET;
 const bcryptSalt = bcrypt.genSaltSync(10);
 
-
-const app = express();
 app.use(cors({
   credentials: true,
   origin: 'https://robant-chat-app.netlify.app'
 }));
+
 app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(express.json());
 app.use(cookieParser());
+/*
 app.use(cors({
     credentials: true,
     origin: process.env.CLIENT_URL,
@@ -44,7 +45,7 @@ async function getUserDataFromRequest(req) {
             reject('no token');
         }
     });
-}
+} */
 
 app.get('/test', (req,res) => {
     res.json('test ok');
@@ -52,8 +53,8 @@ app.get('/test', (req,res) => {
 
 app.get('/messages/:userId', async (req,res) => {
     const{userId} = req.params;
-    const userData = await getUserDataFromRequest(req);
-    const ourUserId = userData.userId;
+    /* const userData = await getUserDataFromRequest(req);
+    const ourUserId = userData.userId; */
     const messages = await Message.find({
         sender:{$in:[userId,ourUserId]},
         recipient:{$in:[userId,ourUserId]},
