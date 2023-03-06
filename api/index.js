@@ -24,6 +24,13 @@ const corsOptions = {
 };
 
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "https://robant-chat-app.netlify.app");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+
 app.use(cors({
   credentials: true,
   origin: 'https://robant-chat-app.netlify.app'
