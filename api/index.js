@@ -28,6 +28,12 @@ app.use(cors({
   credentials: true,
   origin: 'https://robant-chat-app.netlify.app'
 }));
+app.get('/profile', (req, res) => {
+  res.header('Access-Control-Allow-Origin', 'https://robant-chat-app.netlify.app');
+  // rest of the code to handle the request
+});
+
+
 
 app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(express.json());
