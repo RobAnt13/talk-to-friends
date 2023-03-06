@@ -18,6 +18,7 @@ mongoose.connect(process.env.MONGO_URL, (err) => {
 });
 const jwtSecret = process.env.JWT_SECRET;
 const bcryptSalt = bcrypt.genSaltSync(10);
+
 const corsOptions = {
   origin: ['https://robant-chat-app.netlify.app', 'https://6404f1b729b7614c323775f6--robant-chat-app.netlify.app'],
   credentials: true,
@@ -28,23 +29,27 @@ const corsOptions = {
   res.header("Access-Control-Allow-Origin", "https://robant-chat-app.netlify.app");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
-}); */
+}); 
 
 
 app.use(cors({
   credentials: true,
   origin: 'https://robant-chat-app.netlify.app'
-}));
-app.get('/profile', (req, res) => {
+})); */
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions));
+
+/* app.get('/profile', (req, res) => {
   res.header('Access-Control-Allow-Origin', 'https://robant-chat-app.netlify.app');
   // rest of the code to handle the request
-});
+}); */
 
 
 
 app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(express.json());
 app.use(cookieParser());
+
 /*
 app.use(cors({
     credentials: true,
@@ -81,6 +86,8 @@ app.post('/register', cors(corsOptions), async (req,res) => {
   // ...
 });
 
+module.exports = app;
+
 
 app.get('/messages/:userId', async (req,res) => {
     const{userId} = req.params;
@@ -98,7 +105,7 @@ app.get('/people', async (req,res) => {
     res.json(users);
 });
 
-app.get('/profile', (req,res) => {
+/* app.get('/profile', (req,res) => {
     const token = req.cookies?.token;
     if (token) {
         jwt.verify(token, jwtSecret, {}, (err, userData) => {
@@ -147,7 +154,9 @@ app.post('/register', async (req,res) => {
         if (err) throw err;
         res.status(500).json('error');
     }
-});
+}); */
+
+
 
 const server = app.listen(8080);
 
