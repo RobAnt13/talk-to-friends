@@ -86,9 +86,6 @@ app.post('/register', cors(corsOptions), async (req,res) => {
   // ...
 });
 
-module.exports = app;
-
-
 app.get('/messages/:userId', async (req,res) => {
     const{userId} = req.params;
     /* const userData = await getUserDataFromRequest(req);
@@ -104,6 +101,8 @@ app.get('/people', async (req,res) => {
     const users = await User.find({}, {'_id':1,username:1});
     res.json(users);
 });
+
+module.exports = app;
 
 /* app.get('/profile', (req,res) => {
     const token = req.cookies?.token;
