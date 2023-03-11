@@ -20,7 +20,7 @@ const jwtSecret = process.env.JWT_SECRET;
 const bcryptSalt = bcrypt.genSaltSync(10);
 
 const corsOptions = {
-  origin: ['https://robant-chat-app.netlify.app', 'https://6404f1b729b7614c323775f6--robant-chat-app.netlify.app'],
+  origin: ['https://robant-chat-app.netlify.app', 'https://640b474f06d4cc237d0274e3--robant-chat-app.netlify.app/'],
   credentials: true,
 };
 
