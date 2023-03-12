@@ -11,10 +11,7 @@ const Message = require('./models/Message');
 const ws = require('ws');
 const fs = require('fs');
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import './index.css';
+
 
 const backendUrl = 'https://chat-app-f8hj.onrender.com:8080/';
 
