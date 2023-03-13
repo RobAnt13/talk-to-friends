@@ -11,8 +11,6 @@ const Message = require('./models/Message');
 const ws = require('ws');
 const fs = require('fs');
 
-const backendUrl = 'https://chat-app-f8hj.onrender.com:8080/';
-
 dotenv.config();
 mongoose.connect(process.env.MONGO_URL, (err) => {
     if (err) throw err;
