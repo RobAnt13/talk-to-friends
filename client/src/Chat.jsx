@@ -166,7 +166,7 @@ export default function Chat() {
                     <div className="overflow-y-scroll absolute top-0 left-0 right-0 bottom-2" >
                         {messagesWithoutDupes.map(message => (
                         <div key={message._id} className={(message.sender === id ? 'text-right': 'text-left')} >
-                            <div className={"text-left inline-block p-2 my-2 rounded-md text-sm" +(message.sender === id ? 'bg-blue-500 text-white':'bg-white text-gray-500')} >
+                            <div className={"text-left inline-block p-2 my-2 rounded-md text-sm" +(message.sender === id ? 'bg-blue-500 text-yellow':'bg-white text-gray-500')} >
                                  {message.text}
                                  {message.file && (
                                     <div className="" >
