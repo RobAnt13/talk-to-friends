@@ -19,7 +19,7 @@ export default function Chat() {
         connectToWs();
     },  [selectedUserId]);
     function connectToWs() {
-        const ws = new WebSocket('wss://chat-app-f8hj.onrender.com');
+        const ws = new WebSocket('ws://chat-app-f8hj.onrender.com');
         setWs(ws);
         ws.addEventListener('message', handleMessage);
         ws.addEventListener('close', () => {
@@ -42,7 +42,7 @@ export default function Chat() {
         if ('online' in messageData) {
             showOnlinePeople(messageData.online);
         } else if ('text' in messageData) {
-            if (messageData.recipient === selectedUserId) {
+            if (messageData.sender === selectedUserId) {
                 setMessages(prev => ([...prev, {...messageData}]));
             } 
         }
